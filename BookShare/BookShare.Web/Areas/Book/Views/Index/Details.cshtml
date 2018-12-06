@@ -1,0 +1,97 @@
+﻿@model BookShare.Service.Models.BaseModels.ServiceResult<BookShare.Service.Models.Books.BookInfo>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BookInfo</h4>
+    <hr />
+    @if (Model.IsSucceed && Model.Entity != null)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.Id)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.Id)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.SubName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.SubName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.Author)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.Author)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.CoverImage)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.CoverImage)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.Publish)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.Publish)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.Price)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.Price)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.RealPrice)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.RealPrice)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.AminId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.AminId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Entity.CreateDT)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Entity.CreateDT)
+            </dd>
+        </dl>
+    }
+    else if (!Model.IsSucceed)
+    {
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Message)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Desc)
+            </dd>
+        </dl>
+    }
+    else
+    {
+        <div>数据不存在</div>
+    }
+}
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

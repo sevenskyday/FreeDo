@@ -1,0 +1,88 @@
+﻿@model BookShare.Service.Models.BaseModels.ServiceResult<BookShare.Service.Models.BaseModels.PaginatedList<BookShare.Data.Book>>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    @await Component.InvokeAsync("PriorityList", new { maxPriority = 2, isDone = false })
+</div>
+<h2>Index</h2>
+<p>
+    <a asp-controller="Index" asp-action="Create">Create New</a>
+</p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="searchNameString" value="@ViewData["NameParm"]" />
+            Find by author: <input type="text" name="searchAuthorString" value="@ViewData["AuthorParm"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-area="Book" asp-controller="Index" asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="" asp-route-searchNameString="@ViewData["NameParm"]" asp-route-searchAuthorString="@ViewData["AuthorParm"]">Name</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="" asp-route-searchNameString="@ViewData["NameParm"]" asp-route-searchAuthorString="@ViewData["AuthorParm"]">Author</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="" asp-route-searchNameString="@ViewData["NameParm"]" asp-route-searchAuthorString="@ViewData["AuthorParm"]">Date</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Entity != null)
+        {
+            foreach (var item in Model.Entity)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDT)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+
+@if (Model != null && Model.Entity != null)
+{
+    var prevDisabled = !Model.Entity.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Entity.HasNextPage ? "disabled" : "";
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.Entity.PageIndex - 1)"
+       asp-route-searchNameString="@ViewData["NameParm"]"
+       asp-route-searchAuthorString="@ViewData["AuthorParm"]"
+       class="btn btn-default @prevDisabled">
+        Previous
+    </a>
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["CurrentSort"]"
+       asp-route-page="@(Model.Entity.PageIndex + 1)"
+       asp-route-searchNameString="@ViewData["NameParm"]"
+       asp-route-searchAuthorString="@ViewData["AuthorParm"]"
+       class="btn btn-default @nextDisabled">
+        Next
+    </a>
+}
