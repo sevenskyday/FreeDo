@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>fileupload</name>
+    </assembly>
+    <members>
+        <member name="T:fileupload.Attributes.FromFileAttribute">
+            <summary>
+            过滤获取文件
+            </summary>
+        </member>
+        <member name="P:fileupload.Attributes.FromFileAttribute.BindingSource">
+            <summary>
+            绑定资源类型
+            </summary>
+        </member>
+        <member name="T:fileupload.Controllers.Api.FileController">
+            <summary>
+            文件服务
+            </summary>
+        </member>
+        <member name="M:fileupload.Controllers.Api.FileController.PostImage(fileupload.Models.ImageFile)">
+            <summary>
+            图片上传
+            </summary>
+            <param name="file">接收到的文件<see langword="11" cref="!:UserFile"/></param>
+            <remarks>
+            <code>
+            输出参数：new { code = 0, message = "成功", url = newFile }
+            </code>
+            </remarks>
+            <returns>图片地址</returns>
+            <response code="0">返回图片地址</response>
+            <response code="500">文件为空</response>  
+            <example>
+            <code>PostImage</code>
+            </example>
+        </member>
+        <member name="M:fileupload.Controllers.Api.v1.SampleController.Post(System.Int32)">
+            <summary>
+            Post
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:fileupload.Controllers.Api.v1.SampleController.Get(System.Int32)">
+            <summary>
+            Get
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:fileupload.Controllers.Api.v2.SampleController.Post(System.Int32)">
+            <summary>
+            Post
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:fileupload.Controllers.Api.v2.SampleController.Get(System.Int32)">
+            <summary>
+            Get
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:fileupload.Models.ImageFile">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="P:fileupload.Models.ImageFile.FileName">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="P:fileupload.Models.ImageFile.Length">
+            <summary>
+            长度
+            </summary>
+        </member>
+        <member name="P:fileupload.Models.ImageFile.Extension">
+            <summary>
+            文件格式
+            </summary>
+        </member>
+        <member name="P:fileupload.Models.ImageFile.FileType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="F:fileupload.Models.ImageFile.Filters">
+            <summary>
+            文件允许的格式
+            </summary>
+        </member>
+        <member name="P:fileupload.Models.ImageFile.IsValid">
+            <summary>
+            是否为允许内容
+            </summary>
+        </member>
+        <member name="F:fileupload.Models.ImageFile.file">
+            <summary>
+            私有
+            </summary>
+        </member>
+        <member name="P:fileupload.Models.ImageFile.File">
+            <summary>
+            文件
+            </summary>
+        </member>
+        <member name="M:fileupload.Models.ImageFile.SaveAs(System.String)">
+            <summary>
+            保存文件
+            </summary>
+            <param name="destinationDir"></param>
+            <returns></returns>
+        </member>
+        <member name="T:fileupload.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:fileupload.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:fileupload.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:fileupload.Startup.docs">
+            <summary>
+            Swagger 分类
+            </summary>
+        </member>
+        <member name="M:fileupload.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            服务注册
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:fileupload.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            配置
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
