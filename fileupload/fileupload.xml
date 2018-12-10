@@ -14,6 +14,11 @@
             绑定资源类型
             </summary>
         </member>
+        <member name="T:fileupload.Controllers.Api.DefaultController">
+            <summary>
+            测试
+            </summary>
+        </member>
         <member name="T:fileupload.Controllers.Api.FileController">
             <summary>
             文件服务
@@ -23,25 +28,41 @@
             <summary>
             图片上传
             </summary>
-            <param name="file">接收到的文件<see langword="11" cref="!:UserFile"/></param>
             <remarks>
             <code>
             输出参数：new { code = 0, message = "成功", url = newFile }
             </code>
             </remarks>
+            <param name="file">接收到的文件<see langword="11" cref="!:UserFile"/></param>
             <returns>图片地址</returns>
             <response code="0">返回图片地址</response>
             <response code="500">文件为空</response>  
+            <response code="201">Returns the newly created item</response>
+            <response code="400">If the item is null</response>     
             <example>
-            <code>PostImage</code>
+            <code>PostImagess</code>
             </example>
         </member>
-        <member name="M:fileupload.Controllers.Api.v1.SampleController.Post(System.Int32)">
+        <member name="T:fileupload.Controllers.Api.v1.SampleController">
             <summary>
-            Post
+            测试v1
             </summary>
-            <param name="Id"></param>
-            <returns></returns>
+        </member>
+        <member name="M:fileupload.Controllers.Api.v1.SampleController.Post(System.Int32)">
+             <summary>
+             Post
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /Post
+                 {
+                    "id": 1
+                 }
+            
+             </remarks>
+             <param name="Id"></param>
+             <returns></returns>
         </member>
         <member name="M:fileupload.Controllers.Api.v1.SampleController.Get(System.Int32)">
             <summary>
@@ -49,6 +70,11 @@
             </summary>
             <param name="Id"></param>
             <returns></returns>
+        </member>
+        <member name="T:fileupload.Controllers.Api.v2.SampleController">
+            <summary>
+            测试v2
+            </summary>
         </member>
         <member name="M:fileupload.Controllers.Api.v2.SampleController.Post(System.Int32)">
             <summary>
@@ -63,6 +89,51 @@
             </summary>
             <param name="Id"></param>
             <returns></returns>
+        </member>
+        <member name="T:fileupload.Formatters.VcardInputFormatter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:fileupload.Formatters.VcardInputFormatter.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:fileupload.Formatters.VcardInputFormatter.CanReadType(System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:fileupload.Formatters.VcardInputFormatter.ReadRequestBodyAsync(Microsoft.AspNetCore.Mvc.Formatters.InputFormatterContext,System.Text.Encoding)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+            <param name="effectiveEncoding"></param>
+            <returns></returns>
+        </member>
+        <member name="T:fileupload.Formatters.VcardOutputFormatter">
+            <summary>
+            输出Vcard类型
+            </summary>
+        </member>
+        <member name="M:fileupload.Formatters.VcardOutputFormatter.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="T:fileupload.Models.Contact">
+            <summary>
+             联系人
+            </summary>
+        </member>
+        <member name="M:fileupload.Models.ContactRepository.#ctor">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:fileupload.Models.ImageFile">
             <summary>
@@ -137,13 +208,18 @@
             Swagger 分类
             </summary>
         </member>
+        <member name="F:fileupload.Startup.provider">
+            <summary>
+            Api版本提者信息
+            </summary>
+        </member>
         <member name="M:fileupload.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             服务注册
             </summary>
             <param name="services"></param>
         </member>
-        <member name="M:fileupload.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+        <member name="M:fileupload.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment,Microsoft.Extensions.Logging.ILoggerFactory)">
             <summary>
             配置
             </summary>

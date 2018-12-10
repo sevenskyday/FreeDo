@@ -7,16 +7,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace fileupload.Controllers.Api.v1
 {
-    [Route("api/[controller]")]
+    /// <summary>
+    /// 测试v1
+    /// </summary>
     [ApiController]
-    [ApiVersion("v1")]
+    [ApiExplorerSettings(GroupName = "测试类")]
+    [ApiVersion("1.0", Deprecated = true)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class SampleController : ControllerBase
     {
         /// <summary>
         /// Post
         /// </summary>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST /Post
+        ///     {
+        ///        "id": 1
+        ///     }
+        ///
+        /// </remarks>
         /// <param name="Id"></param>
         /// <returns></returns>
+        [HttpPost]
         public string Post(int Id)
         {
             return $"v1您输入的id是{Id}";
@@ -26,6 +40,7 @@ namespace fileupload.Controllers.Api.v1
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
+        [HttpGet]
         public string Get(int Id)
         {
             return $"v1获取到您输入的Id是{Id}";

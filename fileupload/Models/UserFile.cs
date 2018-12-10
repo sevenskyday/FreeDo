@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ namespace fileupload.Models
         /// <summary>
         /// 文件名称
         /// </summary>
+        [Required]
         public string FileName { get; set; }
         /// <summary>
         /// 长度
@@ -35,6 +38,7 @@ namespace fileupload.Models
         /// <summary>
         /// 是否为允许内容
         /// </summary>
+        [DefaultValue(false)]
         public bool IsValid => !string.IsNullOrEmpty(Extension) && Filters.Contains(Extension);
         /// <summary>
         /// 私有
