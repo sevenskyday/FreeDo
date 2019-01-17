@@ -21,6 +21,18 @@ namespace Algorithms
             }
             Insertion_Sort.Print(A.A);
         }
+        public static void Build_Max_Heap_s(Heap A)
+        {
+            A.size = 1;
+            var max = (int)Math.Floor(A.size / 2M);
+            Console.WriteLine($"length:{A.size}   max:{max}");
+            for (var i = 2; i < A.A.Length; i++)
+            {
+                //Min_Heapify(A, i - 1);
+                Max_Heap_Insert(ref A, i - 1);
+            }
+            Insertion_Sort.Print(A.A);
+        }
         /// <summary>
         /// 构造最大堆
         /// </summary>
