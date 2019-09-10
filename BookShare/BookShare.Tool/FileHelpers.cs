@@ -12,7 +12,7 @@ namespace BookShare.Tool
 {
     public class FileHelpers
     {
-        public static async Task<string> ProcessFormFile(IFormFile formFile, ModelStateDictionary modelState)
+        public static async Task<string> ProcessFormFile(IFormFile formFile)
         {
             var fieldDisplayName = string.Empty;
 
@@ -45,8 +45,7 @@ namespace BookShare.Tool
 
             if (formFile.ContentType.ToLower() != "text/plain")
             {
-                modelState.AddModelError(formFile.Name,
-                    $"The {fieldDisplayName}file ({fileName}) must be a text file.");
+               throw new AggregateException($"The {fieldDisplayName}file ({fileName}) must be a text file.");
             }
 
             // Check the file length and don't bother attempting to
@@ -57,13 +56,11 @@ namespace BookShare.Tool
             // contains a BOM.
             if (formFile.Length == 0)
             {
-                modelState.AddModelError(formFile.Name,
-                    $"The {fieldDisplayName}file ({fileName}) is empty.");
+                throw new AggregateException($"The {fieldDisplayName}file ({fileName}) is empty.");
             }
             else if (formFile.Length > 1048576)
             {
-                modelState.AddModelError(formFile.Name,
-                    $"The {fieldDisplayName}file ({fileName}) exceeds 1 MB.");
+                throw new AggregateException($"The {fieldDisplayName}file ({fileName}) exceeds 1 MB.");
             }
             else
             {
@@ -94,21 +91,17 @@ namespace BookShare.Tool
                         }
                         else
                         {
-                            modelState.AddModelError(formFile.Name,
-                                $"The {fieldDisplayName}file ({fileName}) is empty.");
+                            throw new AggregateException($"The {fieldDisplayName}file ({fileName}) is empty.");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    modelState.AddModelError(formFile.Name,
-                        $"The {fieldDisplayName}file ({fileName}) upload failed. " +
+                    throw new AggregateException( $"The {fieldDisplayName}file ({fileName}) upload failed. " +
                         $"Please contact the Help Desk for support. Error: {ex.Message}");
                     // Log the exception
                 }
             }
-
-            return string.Empty;
         }
     }
 
